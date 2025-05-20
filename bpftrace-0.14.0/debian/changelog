@@ -1,0 +1,131 @@
+bpftrace (0.14.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * d/control: build-depends on libcereal-dev.
+  * d/control: build-depends on asciidoctor.
+  * d/patches: remove patch to fix BEGIN/END_trigger. It does not work
+    anymore.
+
+ -- Vincent Bernat <bernat@debian.org>  Fri, 22 Oct 2021 23:34:48 +0200
+
+bpftrace (0.13.0-2) unstable; urgency=medium
+
+  * d/patches: add back patch to fix BEGIN/END_trigger (Closes: #995817)
+
+ -- Vincent Bernat <bernat@debian.org>  Wed, 06 Oct 2021 15:50:57 +0200
+
+bpftrace (0.13.0-1) unstable; urgency=medium
+
+  * New upstream version. Closes: #995687.
+  * d/patches: remove exported symbols, not needed anymore.
+
+ -- Vincent Bernat <bernat@debian.org>  Mon, 04 Oct 2021 08:15:05 +0200
+
+bpftrace (0.11.3-5) unstable; urgency=medium
+
+  * d/control: do not build-depends on libbfd-dev (Closes: #980438)
+
+ -- Vincent Bernat <bernat@debian.org>  Tue, 19 Jan 2021 11:07:36 +0100
+
+bpftrace (0.11.3-4) unstable; urgency=medium
+
+  * d/control: build-depends on libbpf-dev for BTF support (Closes: #980299)
+
+ -- Vincent Bernat <bernat@debian.org>  Sun, 17 Jan 2021 16:55:08 +0100
+
+bpftrace (0.11.3-3) unstable; urgency=medium
+
+  * d/control: build-depends on libbfd-dev (Closes: #975867)
+
+ -- Vincent Bernat <bernat@debian.org>  Thu, 26 Nov 2020 19:42:09 +0100
+
+bpftrace (0.11.3-2) unstable; urgency=medium
+
+  * d/control: build-depends on LLVM 11 toolchain (Closes: #974799)
+
+ -- Vincent Bernat <bernat@debian.org>  Sun, 15 Nov 2020 07:22:03 +0100
+
+bpftrace (0.11.3-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Vincent Bernat <bernat@debian.org>  Fri, 13 Nov 2020 19:07:38 +0100
+
+bpftrace (0.11.0-1) unstable; urgency=medium
+
+  * New upstream version.
+  * d/rules: delete empty /usr/share/bpftrace/tools
+  * d/rules: don't rename bpftrace manual page
+  * d/patches: ensure BEGIN_trigger symbol is not stripped
+
+ -- Vincent Bernat <bernat@debian.org>  Fri, 24 Jul 2020 09:14:50 +0200
+
+bpftrace (0.10.0-1) unstable; urgency=medium
+
+  * New upstream version.
+  * d/rules: upstream now puts man pages in their expected locations.
+
+ -- Vincent Bernat <bernat@debian.org>  Mon, 11 May 2020 08:41:18 +0200
+
+bpftrace (0.9.4-1) unstable; urgency=medium
+
+  * New upstream version.
+
+ -- Vincent Bernat <bernat@debian.org>  Thu, 27 Feb 2020 22:50:17 +0100
+
+bpftrace (0.9.3-2) unstable; urgency=medium
+
+  * Source-only rebuild.
+
+ -- Vincent Bernat <bernat@debian.org>  Sun, 12 Jan 2020 08:13:51 +0100
+
+bpftrace (0.9.3-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Vincent Bernat <bernat@debian.org>  Fri, 27 Dec 2019 09:16:59 +0100
+
+bpftrace (0.9.2-3) unstable; urgency=medium
+
+  * d/control: switch to clang 9. Closes: #947436.
+
+ -- Vincent Bernat <bernat@debian.org>  Fri, 27 Dec 2019 09:10:54 +0100
+
+bpftrace (0.9.2-2) unstable; urgency=medium
+
+  * Bump version to rebuild against newer version of libbpfcc.
+
+ -- Vincent Bernat <bernat@debian.org>  Tue, 05 Nov 2019 08:22:07 +0100
+
+bpftrace (0.9.2-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Vincent Bernat <bernat@debian.org>  Thu, 01 Aug 2019 09:06:56 +0200
+
+bpftrace (0.9.1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Vincent Bernat <bernat@debian.org>  Wed, 26 Jun 2019 08:31:30 +0200
+
+bpftrace (0.9-1) unstable; urgency=medium
+
+  * New upstream release.
+  * d/patches: drop all patches, applied upstream.
+
+ -- Vincent Bernat <bernat@debian.org>  Sat, 16 Mar 2019 19:07:56 +0100
+
+bpftrace (0.8+git60-gccac69c2239b-2) unstable; urgency=medium
+
+  * d/patches: add patch to avoid optimizing away BEGIN/END trigger
+    functions.
+  * d/patches: add patch to correctly detect kernel headers.
+
+ -- Vincent Bernat <bernat@debian.org>  Fri, 22 Feb 2019 06:10:27 -0800
+
+bpftrace (0.8+git60-gccac69c2239b-1) unstable; urgency=medium
+
+  * Initial import. Closes: #918120.
+
+ -- Vincent Bernat <bernat@debian.org>  Sun, 03 Feb 2019 12:53:21 +0100
