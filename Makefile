@@ -3,3 +3,7 @@ all:
 	sudo apt install clang llvm
 	./ecc minimalbpf.c
 	sudo ./ecli run package.json
+
+kprobe-link:
+	./ecc kprobe-link.bpf.c
+	sudo ./ecli run package.json
