@@ -3,7 +3,7 @@
 #include <linux/dcache.h>
 #endif
 
-kprobe:vfs_open
+kprobe:vfs_open /pid == 1/
 {
     printf("open path: %s\n", str(((struct path *)arg0)->dentry->d_name.name));
 }
