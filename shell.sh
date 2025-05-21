@@ -20,3 +20,14 @@ gcc loader.c -o loader -lelf -lbpf
 
 #(可用)
 sudo python3 open.py
+
+
+# 列举所有的sys_enter_* 可用节点
+bpftrace -l 'tracepoint:syscalls:sys_enter_*'
+
+#程序初始化加载时候触发
+bpftrace -e 'BEGIN { printf("hello world\n"); }'
+
+
+#在sys_enter_openat触发打印，并且打印出对应的文件名称
+sudo bpftrace -e 'tracepoint:syscalls:sys_enter_openat { printf("%s %s\n", comm, str(args->filename)); }'
