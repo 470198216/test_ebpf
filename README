@@ -1,1 +1,5 @@
 验证方式: sudo cat /sys/kernel/debug/tracing/trace_pipe
+
+调试手段:
+sudo bpftool prog load ebpf_prog.o /sys/fs/bpf/ebpf_prog  
+sudo bpftool prog list  # 确认加载状态  
