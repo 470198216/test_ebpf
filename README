@@ -15,7 +15,7 @@ https://xiaodongq.github.io/2024/06/19/ebpf-trace-type/
 怎么确认 SEC(xxx) -> eBPF类型 的对应关系
 通过libbpf库中libbpf.c的struct bpf_sec_def section_defs[]定义查看对应关系
 怎么确认 eBPF类型 -> 上下文结构
-通过eBPF Docs查看：program types (Linux)
+通过eBPF Docs查看：program types (Linux)(https://docs.ebpf.io/linux/program-type/)
 上面有该类型是哪个内核版本开始新增的，还有该类型对应的具体上下文结构，以及支持的helper函数、内核侧函数等
 系统libbpf的include下的bpf.h里可以看到各helper函数功能介绍（linux-5.10.10\include\uapi\linux\bpf.h）
 比如SEC(“socket”)对应的类型：

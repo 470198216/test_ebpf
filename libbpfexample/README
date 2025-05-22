@@ -1,1 +1,19 @@
-目前ubuntu 22.04上lsm还不能用，具体待查。
+目前ubuntu 22.04上lsm还不能用，查询内容如下:
+
+即便:zgrep -E "CONFIG_BPF_LSM=|CONFIG_BPF_SYSCALL=" /boot/config-$(uname -r)
+CONFIG_BPF_SYSCALL=y
+CONFIG_BPF_LSM=y
+
+
+但是cat /sys/kernel/security/lsm的输出没有bpf:
+lockdown,capability,landlock,yama,apparmor
+若输出包含 bpf，则表示内核已激活 eBPF LSM
+
+sudo dmesg | grep -i "bpf.*lsm"
+# 预期输出示例：BPF LSM hook initialized
+
+
+Program type BPF_PROG_TYPE_LSM
+查看program types (Linux)(https://docs.ebpf.io/linux/program-type/)
+linux5.7才开始支持
+
