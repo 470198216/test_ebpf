@@ -26,3 +26,8 @@ int BPF_KRETPROBE(do_unlinkat_exit, long ret)
     bpf_printk("KPROBE EXIT: pid = %d, ret = %ld\n", pid, ret);
     return 0;
 }
+//测试方法:
+//touch test1
+//rm test1
+//touch test2
+//rm test2
