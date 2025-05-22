@@ -8,8 +8,10 @@ all:
 	/home/wwj/ebpffile/libbpf-bootstrap/examples/c/.output/bpftool/bootstrap/bpftool gen skeleton .output/lsm.bpf.o > .output/lsm.skel.h
 	cc -g -Wall -I.output -I../../libbpf/include/uapi -I../../vmlinux.h/include/x86/ -I/home/wwj/ebpffile/libbpf-bootstrap/blazesym/capi/include -c lsm.c -o .output/lsm.o
 	cc -g -Wall .output/lsm.o /home/wwj/ebpffile/libbpf-bootstrap/examples/c/.output/libbpf.a   -lelf -lz -o lsm
-
+	../ecc lsm-connect.bpf.c	
+	#sudo ../ecli package.json
 clean:
-	rm -rfv lsm
+	rm -rfv lsm package.json lsm-connect.bpf.o  lsm-connect.skel.json  lsm.skel.json
 	rm -rfv .output
+	
 

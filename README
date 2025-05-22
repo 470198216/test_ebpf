@@ -3,3 +3,24 @@
 调试手段:
 sudo bpftool prog load ebpf_prog.o /sys/fs/bpf/ebpf_prog  
 sudo bpftool prog list  # 确认加载状态  
+
+学习介绍可查看:
+https://eunomia.dev/zh/tutorials/0-introduce/
+
+这里在ubuntu 22.04上有误判,通过sudo bpftrace -l 'kprobe:blk_account_io*', 查询确
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+https://xiaodongq.github.io/2024/06/19/ebpf-trace-type/
+
+怎么确认 SEC(xxx) -> eBPF类型 的对应关系
+通过libbpf库中libbpf.c的struct bpf_sec_def section_defs[]定义查看对应关系
+怎么确认 eBPF类型 -> 上下文结构
+通过eBPF Docs查看：program types (Linux)
+上面有该类型是哪个内核版本开始新增的，还有该类型对应的具体上下文结构，以及支持的helper函数、内核侧函数等
+系统libbpf的include下的bpf.h里可以看到各helper函数功能介绍（linux-5.10.10\include\uapi\linux\bpf.h）
+比如SEC(“socket”)对应的类型：
+找libbpf.c的section_defs后，发现是BPF_PROG_TYPE_SOCKET_FILTER，然后到eBPF Docs：Program type BPF_PROG_TYPE_SOCKET_FILTER 上展开分类并搜索这个type，上面会有个3.19的内核标签，并给出了其上下文（context）为__sk_buff
+
+对应的hooks接口可以查看vmlinux.h头文件，不同的头文件不同，根据对应内核来
+如:libbpf-bootstrap中的lsm: SEC(lsm/bpf) lsm可以通过libbpf.c中找到对应的段定义，然后在program type (Linux)中找到对应的支持， 后知道其支持的内核最低版本已经段的详细情况支持是lsm/<hook> 对应的hook可以查看vmlinux.h文件确认
+-----------------------------------------------------------------------------------------------------------------------------------------
