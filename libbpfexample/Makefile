@@ -11,7 +11,7 @@ all:
 	../ecc lsm-connect.bpf.c	
 	#sudo ../ecli package.json
 clean:
-	rm -rfv lsm package.json lsm-connect.bpf.o  lsm-connect.skel.json  lsm.skel.json
+	rm -rfv lsm package.json lsm-connect.bpf.o  lsm-connect.skel.json  lsm.skel.json lsm.bpf.o
 	rm -rfv .output
 	
 
