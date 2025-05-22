@@ -24,3 +24,26 @@ https://xiaodongq.github.io/2024/06/19/ebpf-trace-type/
 对应的hooks接口可以查看vmlinux.h头文件，不同的头文件不同，根据对应内核来
 如:libbpf-bootstrap中的lsm: SEC(lsm/bpf) lsm可以通过libbpf.c中找到对应的段定义，然后在program type (Linux)中找到对应的支持， 后知道其支持的内核最低版本已经段的详细情况支持是lsm/<hook> 对应的hook可以查看vmlinux.h文件确认
 -----------------------------------------------------------------------------------------------------------------------------------------
+
+ecc框架的使用参考: https://eunomia.dev/zh/tutorials/1-helloworld/
+
+下载对应的工具:
+wget https://aka.pw/bpf-ecli -O ecli && chmod +x ./ecli
+wget https://github.com/eunomia-bpf/eunomia-bpf/releases/latest/download/ecc && chmod +x ./ecc
+
+对应的git地址:
+https://github.com/eunomia-bpf/eunomia-bpf
+例子查看:make kprobe-link
+
+libebpf框架:
+git@github.com:470198216/libbpf-bootstrap.git
+例子查看: libebpfexample目录 , 或者源码里面的example/c
+
+The bpftrace One-Liner Tutorial:
+使用例子查看:shell.sh
+
+bcc的例子查看:bccexample目录
+
+libebpf的使用框架快速开发框架: libbpf-starter-template
+
+
