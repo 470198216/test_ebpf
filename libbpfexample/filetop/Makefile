@@ -8,8 +8,19 @@ IBBPF_OBJ ?= $(OUTPUT)/libbpf.a
 $(OUTPUT)/libs:
 	mkdir -p $@
 
+$(OUTPUT)/libbpf:
+	mkdir -p $@
+
 CFLAGS := -g -O0 -Wall  -Wunused-variable -Wmissing-field-initializers -Werror -Werror=undef
 INCLUDES := -I.output -I.output/include -I../vmlinux/x86/ -Iinclude -I.
+
+LIBBPF_OBJ ?= $(OUTPUT)/libbpf.a
+# Build libbpf.a
+$(LIBBPF_OBJ): | $(OUTPUT)/libbpf
+	make -C /home/wwj/ebpffile/libbpf-bootstrap/libbpf/src BUILD_STATIC_ONLY=1                        \
+        OBJDIR=/home/wwj/ebpffile/libbpfexample/filetop/.output/libbpf PREFIX=/home/wwj/ebpffile/libbpfexample/filetop/.output DESTDIR=       \
+        LIBDIR=/home/wwj/ebpffile/libbpfexample/filetop/.output                                           \
+        install install_uapi_headers
 
 # Build common libs objects
 $(OUTPUT_ABS)/libs/%.o: libs/%.c $(LIBBPF_OBJ) | $(OUTPUT)/libs
@@ -17,10 +28,6 @@ $(OUTPUT_ABS)/libs/%.o: libs/%.c $(LIBBPF_OBJ) | $(OUTPUT)/libs
 
 all: $(COMMON_LIBS_OBJ)
 	mkdir -p ./.output
-	make -C /home/wwj/ebpffile/libbpf-bootstrap/libbpf/src BUILD_STATIC_ONLY=1                        \
-        OBJDIR=/home/wwj/ebpffile/libbpfexample/filetop/.output/libbpf PREFIX=/home/wwj/ebpffile/libbpfexample/filetop/.output DESTDIR=       \
-        LIBDIR=/home/wwj/ebpffile/libbpfexample/filetop/.output                                           \
-        install install_uapi_headers
 	clang -g -O2 -target bpf -D__TARGET_ARCH_x86                  \
              -I include -I.output -I/home/wwj/ebpffile/libbpf-bootstrap/libbpf/include/uapi -I/home/wwj/ebpffile/libbpf-bootstrap/vmlinux.h/include/x86/ -I/home/wwj/ebpffile/libbpf-bootstrap/blazesym/capi/include -idirafter /usr/lib/llvm-14/lib/clang/14.0.0/include -idirafter /usr/local/include -idirafter /usr/include/x86_64-linux-gnu -idirafter /usr/include                     \
              -c filetop.bpf.c -o .output/filetop.tmp.bpf.o
